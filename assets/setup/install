@@ -29,6 +29,9 @@ rm -rf /etc/ssh/ssh_host_*_key /etc/ssh/ssh_host_*_key.pub
 # add git user
 adduser --disabled-login --gecos 'GitLab' git
 passwd -d git
+groupmod -g 1020 dialout
+groupmod -g 20 git
+usermod -u 502 -g 20 git
 
 rm -rf /home/git/.ssh
 sudo -u git -H mkdir -p ${GITLAB_DATA_DIR}/.ssh
